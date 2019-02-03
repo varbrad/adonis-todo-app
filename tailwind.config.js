@@ -20,7 +20,7 @@ let colors = {
   black: '#22292f',
   'grey-dark': '#8795a1',
   grey: '#b8c2cc',
-  'grey-light': '#dae1e7',
+  'grey-light': '#f9f8f7',
   white: '#ffffff',
 
   'red-dark': '#cc1f1a',

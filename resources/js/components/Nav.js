@@ -1,15 +1,24 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import NavBtn from './NavBtn'
 
 const Nav = () => {
   return (
-    <nav>
-      <ul>
+    <nav className='shadow z-10'>
+      <ul className='list-reset flex'>
         <li>
-          <Link to='/'>Home</Link>
+          <NavBtn to='/' icon='list-ul'>
+            Dashboard
+          </NavBtn>
+        </li>
+        <li className='ml-auto'>
+          <NavBtn to='/register' icon='user-plus'>
+            Register
+          </NavBtn>
         </li>
         <li>
-          <Link to='/page'>Page</Link>
+          <NavBtn to='/login' icon='sign-in-alt'>
+            Sign In
+          </NavBtn>
         </li>
       </ul>
     </nav>
