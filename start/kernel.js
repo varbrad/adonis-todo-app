@@ -3,7 +3,9 @@ const Server = use('Server')
 
 const globalMiddleware = []
 
-const namedMiddleware = {}
+const namedMiddleware = {
+  api: 'App/Middleware/Api',
+}
 
 Server.registerGlobal(globalMiddleware)
   .registerNamed(namedMiddleware)
