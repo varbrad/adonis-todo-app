@@ -1,0 +1,35 @@
+{
+  "name": "adonis-todo-app",
+  "version": "0.1.0",
+  "adonis-version": "4.1.0",
+  "repository": "https://github.com/varbrad/adonis-todo-app.git",
+  "author": "Brad Davies <varbrad@users.noreply.github.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@adonisjs/ace": "^5.0.8",
+    "@adonisjs/fold": "^4.0.9",
+    "@adonisjs/framework": "^5.0.12",
+    "@adonisjs/ignitor": "^2.0.8",
+    "react": "^16.8.0-alpha.1",
+    "react-dom": "^16.8.0-alpha.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.13.0",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react-hooks": "^0.0.0",
+    "parcel-bundler": "^1.11.0",
+    "prettier": "^1.16.4"
+  },
+  "autoload": {
+    "App": "./app"
+  }
+}

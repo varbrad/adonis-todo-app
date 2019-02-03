@@ -1,0 +1,42 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "react-hooks"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "no-console": "off",
+    "react-hooks/rules-of-hooks": "error"
+  },
+  "env": {
+    "node": true
+  },
+  "globals": {
+    "use": "readable"
+  },
+  "overrides": [
+    {
+      "files": "resources/js/**/*.js",
+      "env": {
+        "browser": true,
+        "es6": true,
+        "node": false
+      },
+      "rules": {
+        "no-console": "error"
+      },
+      "globals": {
+        "use": "off"
+      }
+    }
+  ],
+  "settings": {
+    "react": {
+      "version": "16.8"
+    }
+  }
+}
