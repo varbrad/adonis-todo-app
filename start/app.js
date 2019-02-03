@@ -1,4 +1,7 @@
-const providers = ['@adonisjs/framework/providers/AppProvider']
+const providers = [
+  '@adonisjs/framework/providers/AppProvider',
+  '@adonisjs/framework/providers/ViewProvider',
+]
 
 const aceProviders = []
 

@@ -1,2 +1,8 @@
-// eslint-disable-next-line no-console
-console.log('hello!')
+import React from 'react'
+import { render } from 'react-dom'
+import '../scss/tailwind.scss'
+import App from './App'
+
+const root = document.getElementById('root')
+
+render(<App />, root)

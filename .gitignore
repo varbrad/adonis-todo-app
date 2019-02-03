@@ -1,6 +1,22 @@
-### Folders
+###########
+# Folders #
+###########
+
+# JavaScript packages installed via npm/yarn
 node_modules
+
 # Adonis temporary storage folder
 tmp
 
+# Parcel cache files
+.cache
+
+# Any build files from Parcel (.js, .map & .css)
+public/assets
+
+#########
+# Files #
+#########
+
+# Environment file for adonisjs
 .env
