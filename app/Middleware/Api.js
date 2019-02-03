@@ -12,7 +12,12 @@ class Api {
   async handle({ response }, next) {
     await next()
     const content = response._lazyBody.content
-    response.json({ ok: true, data: content })
+    if (content.pages) {
+      const data = content.toJSON()
+      response.json({ ok: true, paginated: true, ...data })
+    } else {
+      response.json({ ok: true, data: content })
+    }
   }
 }
 
