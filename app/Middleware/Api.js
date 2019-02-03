@@ -9,9 +9,13 @@ class Api {
    * @param {Request} ctx.request
    * @param {Function} next
    */
-  async handle({ response }, next) {
+  async handle({ request, response }, next) {
     await next()
     const content = response._lazyBody.content
+    if (request.method() === 'DELETE' && !content) {
+      response.status(204).send()
+      return
+    }
     if (content.pages) {
       const data = content.toJSON()
       response.json({ ok: true, paginated: true, ...data })

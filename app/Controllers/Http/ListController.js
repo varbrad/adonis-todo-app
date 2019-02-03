@@ -21,6 +21,20 @@ class ListController {
     if (validation.fails()) throw new ValidationException(validation.messages())
     return await List.create(request.all())
   }
+
+  async update({ request, params: { id } }) {
+    const list = await List.findOrFail(id)
+    const validation = await validate(request.all(), VALIDATION_RULES)
+    if (validation.fails()) throw new ValidationException(validation.messages())
+    await list.merge(request.all())
+    await list.save()
+    return list
+  }
+
+  async destroy({ params: { id } }) {
+    const list = await List.findOrFail(id)
+    await list.delete()
+  }
 }
 
 module.exports = ListController
