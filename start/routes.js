@@ -7,6 +7,9 @@ Route.group(() => {
   // Lists
   Route.resource('lists', 'ListController').apiOnly()
 
+  // Tasks
+  Route.resource('lists/:list_id/tasks', 'TaskController').apiOnly()
+
   Route.any('*', () => {
     throw new ApiException('Invalid API route', 404)
   })

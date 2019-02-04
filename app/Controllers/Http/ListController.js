@@ -8,7 +8,9 @@ const VALIDATION_RULES = {
 
 class ListController {
   async index({ params: { page } }) {
-    const lists = await List.query().paginate(page || 1, 10)
+    const lists = await List.query()
+      .with('tasks')
+      .paginate(page || 1, 50)
     return lists
   }
 
