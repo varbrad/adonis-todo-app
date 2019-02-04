@@ -8,6 +8,8 @@ const VALIDATION_RULES = {
   completed: 'boolean',
 }
 
+const FILLABLE = ['name', 'completed', 'priority']
+
 class TaskController {
   async getTask(list_id, id) {
     const list = await List.findOrFail(list_id)
@@ -27,10 +29,11 @@ class TaskController {
   }
 
   async store({ params: { list_id }, request }) {
-    const validation = await validate(request.all(), VALIDATION_RULES)
+    const data = request.only(FILLABLE)
+    const validation = await validate(data, VALIDATION_RULES)
     if (validation.fails()) throw new ValidationException(validation.messages())
     const list = await List.findOrFail(list_id)
-    const task = await Task.create(request.all())
+    const task = await Task.create(data)
     await task.list().associate(list)
     return task
   }
@@ -38,10 +41,12 @@ class TaskController {
   async update({ params: { list_id, id }, request }) {
     const task = await this.getTask(list_id, id)
     if (!task) throw new ValidationException('Invalid task')
-    const validation = await validate(request.all(), VALIDATION_RULES)
+    const data = request.only(FILLABLE)
+    const validation = await validate(data, VALIDATION_RULES)
     if (validation.fails()) throw new ValidationException(validation.messages())
-    await task.merge(request.all())
+    await task.merge(data)
     await task.save()
+    await task.reload()
     return task
   }
 

@@ -6,6 +6,8 @@ const VALIDATION_RULES = {
   name: 'required|string|min:6|max:50',
 }
 
+const FILLABLE = ['name']
+
 class ListController {
   async index({ params: { page } }) {
     const lists = await List.query()
@@ -19,16 +21,18 @@ class ListController {
   }
 
   async store({ request }) {
-    const validation = await validate(request.all(), VALIDATION_RULES)
+    const data = request.only(FILLABLE)
+    const validation = await validate(data, VALIDATION_RULES)
     if (validation.fails()) throw new ValidationException(validation.messages())
-    return await List.create(request.all())
+    return await List.create(data)
   }
 
   async update({ request, params: { id } }) {
     const list = await List.findOrFail(id)
-    const validation = await validate(request.all(), VALIDATION_RULES)
+    const data = request.only(FILLABLE)
+    const validation = await validate(data, VALIDATION_RULES)
     if (validation.fails()) throw new ValidationException(validation.messages())
-    await list.merge(request.all())
+    await list.merge(data)
     await list.save()
     return list
   }
